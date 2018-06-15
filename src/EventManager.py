@@ -53,7 +53,7 @@ def addEvent(service, event):
         Adding an event to your calendar.
     """
     event = service.events().insert(calendarId='primary', body=event).execute()
-    print('Event created: %s' % (event.get('htmlLink')))
+    logging.info('Event created: %s' % (event.get('htmlLink')))
 
 
 def updateEventTitle(service, eventId, summary):#, NEW_EVENT):
@@ -63,7 +63,7 @@ def updateEventTitle(service, eventId, summary):#, NEW_EVENT):
     event = service.events().get(calendarId='primary', eventId=eventId).execute()
     event['summary'] = summary
     updated_event = service.events().update(calendarId='primary', eventId=event['id'], body=event).execute()
-    print(updated_event['updated'])
+    logging.info('Event updated: %s' % (event.get('htmlLink')))
 
 
 def updateEventDate(service, eventId, startDate, endDate):
@@ -74,8 +74,16 @@ def updateEventDate(service, eventId, startDate, endDate):
     event['start']['dateTime'] = startDate
     event['end']['dateTime'] = endDate
     updated_event = service.events().update(calendarId='primary', eventId=event['id'], body=event).execute()
-    print(updated_event['updated'])
-    print('Event updated: %s' % (event.get('htmlLink')))
+    logging.info('Event updated: %s' % (event.get('htmlLink')))
+
+
+def deleteEvent(service, eventId):
+    """
+        Delete an event from your calendar.
+    """
+    event = service.events().get(calendarId='primary', eventId=eventId).execute()
+    deleted_event = service.events().delete(calendarId='primary', eventId=event['id']).execute()
+    logging.info('Event deleted: %s' % (event.get('htmlLink')))
 
 
 if __name__ == '__main__':
