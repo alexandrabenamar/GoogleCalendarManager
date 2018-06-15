@@ -42,6 +42,14 @@ def getAllCalendars(service):
     return calendars
 
 
+def clearCalendar(service):
+    """
+        Clear the principal calendar
+    """
+    cleared_calendar = service.calendars().clear(calendarId='primary').execute()
+    logging.info('Calendar cleared')
+
+
 def deleteCalendar(service, calendarId):
     """
         Delete a calendar from a Google Calendar list.
@@ -54,9 +62,4 @@ if __name__ == '__main__':
     SCOPES = 'https://www.googleapis.com/auth/calendar'
     credentials = getCredentials(CREDENTIAL_PATH)
     service = build('calendar', 'v3', http=credentials.authorize(Http()))
-    print()
-    calendars = getAllCalendars(service)
-    deleteCalendar(service, CALENDAR_ID)
-    print()
-    calendars = getAllCalendars(service)
-    print()
+    #perform actions
