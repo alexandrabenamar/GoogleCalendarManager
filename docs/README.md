@@ -19,14 +19,8 @@ Available soon ...
 
 #### How to install
 
-With pip : <br />
-  > `pip3 install <library>`
-  
-With homebrew : <br />
-  > `brew install <library>`
-
-With Anaconda : <br />
-  > `conda install <library>`
+Install the set of dependencies : <br />
+  > `pip install -r requirements.txt`
   
 ## Authors
 
