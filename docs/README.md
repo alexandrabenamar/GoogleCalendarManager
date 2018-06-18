@@ -20,8 +20,10 @@ Available soon ...
 #### How to install
 
 Install the set of dependencies : <br />
-  > `pip install -r requirements.txt`
-  
+```
+pip install -r requirements.txt
+```
+
 ## Authors
 
 Alexandra Benamar
