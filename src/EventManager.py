@@ -26,22 +26,22 @@ def getCredentials(file):
     return credentials
 
 
-def getUpcomingEvents(service, number_of_events, timeMin):
+def getUpcomingEvents(service, number_of_events, timeMin, calendarId='primary'):
     """
         Get upcoming events starting the current day.
 
             x Input :
-                - service : calendar
                 - number_of_events : number of events to get
                 - timeMin : date for the beginning of the first event
+                - calendarId : calendar you want to look up
             x Output : dict containing the events
     """
     logging.info("Getting the next %d upcoming events in your calendar ...")
-    events_result = service.events().list(calendarId='primary', timeMin=timeMin,
+    events_result = service.events().list(calendarId=calendarId, timeMin=timeMin,
                                       maxResults=number_of_events, singleEvents=True,
                                       orderBy='startTime', showDeleted=True).execute()
     events = events_result.get('items', [])
-    print(len(events), " events were found in your calendar")
+    print(len(events), " events were found in your calendar : ", calendarId)
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         print(start, event['summary'])

@@ -44,7 +44,7 @@ def getAllCalendars(service):
 
 def clearCalendar(service):
     """
-        Clear the principal calendar
+        Clear the principal calendar only.
     """
     cleared_calendar = service.calendars().clear(calendarId='primary').execute()
     logging.info('Calendar cleared')
@@ -53,6 +53,7 @@ def clearCalendar(service):
 def deleteCalendar(service, calendarId):
     """
         Delete a calendar from a Google Calendar list.
+        Note : does not work with the principal calendar, use clearCalendar() instead.
     """
     deleted_calendar = service.calendars().delete(calendarId=calendarId).execute()
     logging.info('Calendar %s deleted' % (calendarId))
