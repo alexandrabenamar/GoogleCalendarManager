@@ -15,10 +15,6 @@ Start by following the steps on Google Calendar API: <br />
 
 ### Libraries
 
-Available soon ...
-
-#### How to install
-
 Install the set of dependencies : <br />
 ```
 pip install -r requirements.txt
