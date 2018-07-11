@@ -9,19 +9,25 @@ import datetime
 import logging
 from Credentials import getCredentials
 
+def createCalendar(service, calendar):
+    """
+        Creates a secondary calendar
+    """
+    created_calendar = service.calendars().insert(body=calendar).execute()
+    print(created_calendar['id'], '|', created_calendar['summary'])
+
+
 def getAllCalendars(service):
     """
         Get calendars informations : id and summary
             x Output : list of calendars
     """
     page_token = None
-
     calendars = (service.calendarList()
                         .list(pageToken = page_token).execute())
 
     for calendar in calendars['items']:
         print(calendar.get('id', None), '|', calendar.get('summary', None))
-
     return calendars
 
 
