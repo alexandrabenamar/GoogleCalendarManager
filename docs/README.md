@@ -23,7 +23,6 @@ pip install -r requirements.txt
 
 Coming soon ... <br />
 
-
 ## Authors
 
 Alexandra Benamar
