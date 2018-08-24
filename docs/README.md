@@ -20,10 +20,6 @@ Install the set of dependencies : <br />
 pip install -r requirements.txt
 ```
 
-## Description
-
-Coming soon ... <br />
-
 ## Authors
 
 Alexandra Benamar
